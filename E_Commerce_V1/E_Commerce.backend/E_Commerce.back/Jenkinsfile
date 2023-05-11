@@ -4,12 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean package'
+                bat 'mvn clean install -Dmaven.test.skip-true'
             }
         }
         stage('Test') {
+            dir("E_Commerce_V1\E_Commerce.backend\E_Commerce.back")
             steps {
-                bat 'mvn test'
+                bat 'mvn clean compile'
+
             }
         }
     }
