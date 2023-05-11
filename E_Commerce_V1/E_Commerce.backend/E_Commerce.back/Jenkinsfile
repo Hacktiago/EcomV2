@@ -1,35 +1,15 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage('Checkout') {
-            steps {
-                // Clonar el repositorio de GitHub
-                git 'https://github.com/Hacktiago/EcomV2.git'
-            }
-        }
-        
         stage('Build') {
             steps {
-                // Configurar el entorno de compilación
-                // Por ejemplo, establecer la versión de Java y las variables de entorno
-                
-                // Compilar el proyecto de Spring Boot
                 bat 'mvn clean package'
             }
         }
-        
         stage('Test') {
             steps {
-                // Ejecutar pruebas unitarias y de integración
                 bat 'mvn test'
-            }
-        }
-        
-        stage('Post-build') {
-            steps {
-                // Realizar acciones posteriores a la construcción
-                // Por ejemplo, enviar notificaciones por correo electrónico, publicar informes, etc.
             }
         }
     }
